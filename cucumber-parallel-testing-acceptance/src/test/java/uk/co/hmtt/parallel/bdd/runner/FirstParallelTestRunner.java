@@ -9,7 +9,4 @@ import uk.co.hmtt.cucumber.parallel.runner.ParallelCucumber;
         format = {"pretty", "html:target/cucumber/cucumber-html-report-1", "json:target/cucumber/json/cucumber-1.json"},
         features = {"src/test/resources/features"},
         tags = {"~@wip"})
-public class FirstParallelTestRunner {
-
-
-}
+public class FirstParallelTestRunner {}
