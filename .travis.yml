@@ -10,11 +10,9 @@ before_install:
 
 install: mvn install -B
 
-after_success:
-  script: ./report.sh
+after_success: ./report.sh
 
-after_failure:
-  script: ./report.sh
+after_failure: ./report.sh
 
 notifications:
   email:
