@@ -11,4 +11,24 @@
         <module>cucumber-parallel-testing-core</module>
         <module>cucumber-parallel-testing-acceptance</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.sonar</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>4.5.7</version>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>
+                    https://sonarqube.com
+                </sonar.host.url>
+            </properties>
+        </profile>
+    </profiles>
 </project>
