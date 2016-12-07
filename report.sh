@@ -3,7 +3,7 @@
 set -ev
 
 publishReport() {
-    for entry in $(pwd)/target/cucumber-html-reports/$1/*
+    for entry in $(pwd)/cucumber-parallel-testing-acceptance/target/cucumber-html-reports/$1/*
     do
       if [ -f "$entry" ];then
         echo $(basename "$entry")
