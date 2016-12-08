@@ -1,4 +1,4 @@
-package uk.co.hmtt.parallel.bdd.tests.steps;
+package uk.co.hmtt.cucumber.parallel.bdd.tests.steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

@@ -116,3 +116,7 @@ http://hmtt.co.uk/reports/cucumber-parallel-testing/feature-overview.html
 #### Sonar Report
 
 https://sonarqube.com/dashboard/index?id=uk.co.hmtt%3Acucumber-parallel-testing
+
+#### Travis
+
+https://travis-ci.org/hmtt/cucumber-parallel-testing
