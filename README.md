@@ -9,6 +9,8 @@ a register and run it. If the feature file has already been registered it will s
 attempt to run the next one in the same manner. In this manner feature files are run in turn by processing
 threads.
 
+---
+
 #### Comparison with other techniques
 
 Other techniques involve invasive management of tags or branches in order to organise feature files/scenarios
@@ -24,9 +26,21 @@ The advantage of this approach is that
 
 The disadvantage of this approach is that it works on a per-feature basis. It is not appropriate for cases where there are many scenarios in few feature files (tagging may be better in this case).
 
+---
+
 #### Implementation
 
-Create a test runner for every thread to be run. The report locations should be unique.
+Import the dependency from the Maven central repository -
+
+```
+<dependency>
+    <groupId>uk.co.hmtt</groupId>
+    <artifactId>cucumber-parallel-testing-core</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+Create a test runner for every thread to be run. The report locations should be unique. Note - test runners RunWith ParallelCucumber; an extension of the Cucumber class.
 
 eg. 
 
@@ -109,13 +123,19 @@ You should now be able to run your Cucumber tests as per normal. Note, Cucumber 
  be run using Maven in order to be run in parallel; and you should also use "clean" in order
  to remove the test record file between test runs. eg. mvn clean install
 
+---
+
 #### Cucumber Report
 
 http://hmtt.co.uk/reports/cucumber-parallel-testing/feature-overview.html
 
+---
+
 #### Sonar Report
 
 https://sonarqube.com/dashboard/index?id=uk.co.hmtt%3Acucumber-parallel-testing
+
+---
 
 #### Travis
 
