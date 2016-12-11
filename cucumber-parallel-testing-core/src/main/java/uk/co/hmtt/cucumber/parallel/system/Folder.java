@@ -8,13 +8,12 @@ import static java.lang.String.format;
 
 public class Folder {
 
+    private Folder() {}
+
     public static void create(final String path) {
         final File file = new File(path);
-        if (!file.exists()) {
-            if ( ! file.mkdirs() )
-            {
-                throw new ParallelException(format("Failed to create directories for path %s", path));
-            }
+        if (!file.exists() && !file.mkdirs()) {
+            throw new ParallelException(format("Failed to create directories for path %s", path));
         }
     }
 

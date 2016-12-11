@@ -9,61 +9,56 @@ import org.junit.runner.RunWith;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
-import uk.co.hmtt.cucumber.parallel.Constants;
-import uk.co.hmtt.cucumber.parallel.model.Recorder;
-import uk.co.hmtt.cucumber.parallel.system.SynchronisedFile;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import uk.co.hmtt.cucumber.parallel.system.FeatureManager;
 
-import java.io.File;
 import java.io.IOException;
 
+
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(FeatureManager.class)
 public class ParallelCucumberTest {
 
     @Mock
     private FeatureRunner featureRunner;
 
-    @Mock
-    private RunNotifier notifier;
-
-    @Mock
-    private SynchronisedFile<Recorder> recorder;
-
     private ParallelCucumber parallelCucumber;
 
-    @Test @Ignore
+    @Test
+    public void shouldRunTheTestIfItHasNotBeenRunAlready() throws IOException, InitializationError, NoSuchFieldException, IllegalAccessException {
+
+        mockStatic(FeatureManager.class);
+        given(FeatureManager.featureNotAlreadyRun(anyString())).willReturn(true);
+
+        parallelCucumber.runChild(featureRunner, new RunNotifier());
+
+        verify(featureRunner, times(1)).run(any(RunNotifier.class));
+    }
+
+    @Test
     public void shouldNotRunTheTestIfItHasBeenRunAlready() throws IOException, InitializationError, IllegalAccessException, NoSuchFieldException {
 
-        final Recorder recorder = new Recorder();
-        recorder.getFeatures().add("test");
+        mockStatic(FeatureManager.class);
+        given(FeatureManager.featureNotAlreadyRun(anyString())).willReturn(false);
 
-        when(this.recorder.read(any(Class.class))).thenReturn(recorder);
-        when(featureRunner.getName()).thenReturn("test");
-
-        parallelCucumber.runChild(featureRunner, notifier);
+        parallelCucumber.runChild(featureRunner, new RunNotifier());
 
         verify(featureRunner, never()).run(any(RunNotifier.class));
 
     }
 
-    @Test @Ignore
-    public void shouldRunTheTestIfItHasNotBeenRunAlready() throws IOException, InitializationError, NoSuchFieldException, IllegalAccessException {
-
-        when(this.recorder.read(any(Class.class))).thenReturn(new Recorder());
-        when(featureRunner.getName()).thenReturn("new test");
-
-        parallelCucumber.runChild(featureRunner, notifier);
-
-        verify(featureRunner, times(1)).run(any(RunNotifier.class));
-
-    }
-
     @Before
     public void init() throws IOException, InitializationError {
-        new File(Constants.PARALLEL_WORKING_DIR + Recorder.class.getName() + ".lock").delete();
         parallelCucumber = new ParallelCucumber(Cucumber.class);
         initMocks(parallelCucumber);
     }
