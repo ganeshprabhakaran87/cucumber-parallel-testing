@@ -4,22 +4,39 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import uk.co.hmtt.cucumber.parallel.Constants;
+import uk.co.hmtt.cucumber.parallel.exceptions.ParallelException;
 import uk.co.hmtt.cucumber.parallel.model.Recorder;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
 import java.util.Collections;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SynchronisedFileTest {
 
     final static String DIR = Constants.PARALLEL_WORKING_DIR + Recorder.class.getName() + ".lock";
+
+    @Mock
+    private RandomAccessFile randomAccessFile;
+
+    @Mock
+    private FileChannel fileChannel;
+
+    @InjectMocks
+    private SynchronisedFile<Recorder> synchronizedWithMocks;
 
     @Test
     public void shouldCreateANewFileAndReturnItAsAnObjectIfItDoesNotAlreadyExist() {
@@ -41,6 +58,13 @@ public class SynchronisedFileTest {
         assertThat(read, is(notNullValue()));
         assertThat(read.getFeatures().size(), is(equalTo(1)));
 
+    }
+
+    @Test(expected = ParallelException.class)
+    public void shouldThrowAParallelExceptionIfAFileCannotBeRead() throws IOException {
+        when(randomAccessFile.length()).thenReturn(1l);
+        when(randomAccessFile.readUTF()).thenThrow(IOException.class);
+        synchronizedWithMocks.read(Recorder.class);
     }
 
     @Test

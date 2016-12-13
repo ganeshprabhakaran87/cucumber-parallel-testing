@@ -105,6 +105,13 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.7.5.201505241946</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/Constants.*</exclude>
+                        <exclude>**/Folder.*</exclude>
+                        <exclude>**/*Exception.*</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>pre-unit-test</id>

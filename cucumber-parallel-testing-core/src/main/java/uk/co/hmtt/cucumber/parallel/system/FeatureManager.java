@@ -4,7 +4,7 @@ import uk.co.hmtt.cucumber.parallel.model.Recorder;
 
 public class FeatureManager {
 
-    private static SynchronisedFile<Recorder> synchronisedFile = new SynchronisedFile<>();
+    private static final SynchronisedFile<Recorder> synchronisedFile = new SynchronisedFile<>();
 
     private FeatureManager() {}
 
