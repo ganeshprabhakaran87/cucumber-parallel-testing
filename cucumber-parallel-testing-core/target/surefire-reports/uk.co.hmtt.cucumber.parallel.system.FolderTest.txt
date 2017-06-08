@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: uk.co.hmtt.cucumber.parallel.system.FolderTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in uk.co.hmtt.cucumber.parallel.system.FolderTest

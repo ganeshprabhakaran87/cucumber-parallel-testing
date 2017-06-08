@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+cucumber-parallel-testing-core,uk.co.hmtt.cucumber.parallel.system,FeatureManager,0,32,0,2,0,9,0,4,0,3
+cucumber-parallel-testing-core,uk.co.hmtt.cucumber.parallel.system,SynchronisedFile,12,95,0,4,4,23,0,7,0,5
+cucumber-parallel-testing-core,uk.co.hmtt.cucumber.parallel.model,Recorder,0,15,0,0,0,5,0,3,0,3
+cucumber-parallel-testing-core,uk.co.hmtt.cucumber.parallel.runner,ParallelCucumber,0,19,0,2,0,7,0,4,0,3

@@ -1,0 +1,4 @@
+uk/co/hmtt/cucumber/parallel/system/FolderTest.class
+uk/co/hmtt/cucumber/parallel/runner/ParallelCucumberTest.class
+uk/co/hmtt/cucumber/parallel/system/FeatureManagerTest.class
+uk/co/hmtt/cucumber/parallel/system/SynchronisedFileTest.class

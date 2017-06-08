@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FeatureManager.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">cucumber-parallel-testing-core</a> &gt; <a href="index.source.html" class="el_package">uk.co.hmtt.cucumber.parallel.system</a> &gt; <span class="el_source">FeatureManager.java</span></div><h1>FeatureManager.java</h1><pre class="source lang-java linenums">package uk.co.hmtt.cucumber.parallel.system;
+
+import uk.co.hmtt.cucumber.parallel.model.Recorder;
+
+public class FeatureManager {
+
+<span class="fc" id="L7">    private static final SynchronisedFile&lt;Recorder&gt; synchronisedFile = new SynchronisedFile&lt;&gt;();</span>
+
+<span class="fc" id="L9">    private FeatureManager() {}</span>
+
+    public static boolean featureNotAlreadyRun(final String name) {
+<span class="fc" id="L12">        final Recorder read = synchronisedFile.read(Recorder.class);</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (!read.getFeatures().contains(name)) {</span>
+<span class="fc" id="L14">            read.getFeatures().add(name);</span>
+<span class="fc" id="L15">            synchronisedFile.write(read);</span>
+<span class="fc" id="L16">            return true;</span>
+        } else {
+<span class="fc" id="L18">            synchronisedFile.release();</span>
+<span class="fc" id="L19">            return false;</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

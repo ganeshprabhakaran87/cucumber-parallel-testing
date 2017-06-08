@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: uk.co.hmtt.cucumber.parallel.system.SynchronisedFileTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.275 sec - in uk.co.hmtt.cucumber.parallel.system.SynchronisedFileTest
