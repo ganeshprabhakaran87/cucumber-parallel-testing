@@ -19,7 +19,7 @@ public class Definition {
 
     @Given("^a test that takes (\\d+) seconds to execute$")
     public void a_test_that_takes_seconds_to_execute(int second) throws Throwable {
-        delay = Long.valueOf(second);
+        delay = (long) second;
     }
 
     @When("^I execute the test$")
@@ -33,7 +33,7 @@ public class Definition {
     public void it_should_take_at_least_the_execution_time_to_complete() throws Throwable {
         final long startTimeSeconds = startTime.getTime() / 1000;
         final long finishTimeSeconds = finishTime.getTime() / 1000;
-        assertThat(finishTimeSeconds - startTimeSeconds, is(greaterThanOrEqualTo(Long.valueOf(delay))));
+        assertThat(finishTimeSeconds - startTimeSeconds, is(greaterThanOrEqualTo(delay)));
     }
 
 

@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 import static uk.co.hmtt.cucumber.parallel.system.FeatureManager.featureNotAlreadyRun;
 

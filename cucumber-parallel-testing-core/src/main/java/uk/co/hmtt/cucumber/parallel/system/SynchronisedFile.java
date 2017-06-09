@@ -14,7 +14,7 @@ public class SynchronisedFile<T> {
 
     public T read(Class<T> clz) {
 
-        Folder.create(Constants.PARALLEL_WORKING_DIR);
+        FileSystemHelper.createFolder(Constants.PARALLEL_WORKING_DIR);
         try {
             if (rw == null) {
                 rw = new RandomAccessFile(Constants.PARALLEL_WORKING_DIR + clz.getName() + ".lock", "rw");

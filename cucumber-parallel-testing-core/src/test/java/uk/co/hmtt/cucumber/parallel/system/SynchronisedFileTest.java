@@ -62,7 +62,7 @@ public class SynchronisedFileTest {
 
     @Test(expected = ParallelException.class)
     public void shouldThrowAParallelExceptionIfAFileCannotBeRead() throws IOException {
-        when(randomAccessFile.length()).thenReturn(1l);
+        when(randomAccessFile.length()).thenReturn(1L);
         when(randomAccessFile.readUTF()).thenThrow(IOException.class);
         synchronizedWithMocks.read(Recorder.class);
     }

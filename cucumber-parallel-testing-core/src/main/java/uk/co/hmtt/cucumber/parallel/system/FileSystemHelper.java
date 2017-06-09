@@ -6,14 +6,21 @@ import java.io.File;
 
 import static java.lang.String.format;
 
-public class Folder {
+public class FileSystemHelper {
 
-    private Folder() {}
+    private FileSystemHelper() {}
 
-    public static void create(final String path) {
+    public static void createFolder(final String path) {
         final File file = new File(path);
         if (!file.exists() && !file.mkdirs()) {
             throw new ParallelException(format("Failed to create directories for path %s", path));
+        }
+    }
+
+    public static void deleteFile(final String path) {
+        final File file = new File(path);
+        if (file.exists()) {
+            file.delete();
         }
     }
 
