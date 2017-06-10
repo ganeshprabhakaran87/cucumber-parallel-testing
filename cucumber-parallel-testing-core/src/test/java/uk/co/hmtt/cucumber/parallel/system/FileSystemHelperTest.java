@@ -7,17 +7,18 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 
+import static org.codehaus.plexus.util.FileUtils.deleteDirectory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class FileSystemHelperTest {
 
-    private static final String FOLDER = System.getProperty("user.dir") + "/target/parallel/";
-    private static final String FILE = "lock.txt";
+    private static final String FOLDER = System.getProperty("user.dir") + "/target/parallel";
+    private static final String FILE = "/lock.txt";
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         deleteFolder();
     }
 
@@ -55,12 +56,12 @@ public class FileSystemHelperTest {
     }
 
     @AfterClass
-    public static void tearDown() {
+    public static void tearDown() throws IOException {
         deleteFolder();
     }
 
-    private static void deleteFolder() {
-        new File(FOLDER).delete();
+    private static void deleteFolder() throws IOException {
+        deleteDirectory(FOLDER);
     }
 
 }
