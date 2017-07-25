@@ -187,9 +187,6 @@
         </profile>
         <profile>
             <id>sonar-test</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <sonar.host.url>
                     http://localhost:9000
