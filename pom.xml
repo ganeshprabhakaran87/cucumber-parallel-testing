@@ -28,7 +28,6 @@
     </scm>
     <properties>
         <cucumber.version>1.2.5</cucumber.version>
-        <sonar.exclusions>**/pom.xml</sonar.exclusions>
     </properties>
     <modules>
         <module>cucumber-parallel-testing-core</module>
@@ -52,17 +51,6 @@
         </repository>
     </distributionManagement>
     <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <sonar.host.url>
-                    https://sonarqube.com
-                </sonar.host.url>
-            </properties>
-        </profile>
         <profile>
             <id>publish</id>
             <activation>

@@ -13,6 +13,14 @@
         <jackson.version>2.8.5</jackson.version>
         <slf4j.version>1.6.4</slf4j.version>
         <logback.version>1.0.1</logback.version>
+        <sonar.exclusions>**/pom.xml</sonar.exclusions>
+        <sonar.language>java</sonar.language>
+        <sonar.java.source>8</sonar.java.source>
+        <sonar.sources>src/main/java</sonar.sources>
+        <sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
+        <sonar.jacoco.reportPaths>target/coverage-reports/jacoco-ut.exec</sonar.jacoco.reportPaths>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     </properties>
     <dependencies>
         <dependency>
@@ -163,6 +171,30 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
 
+    </build>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>
+                    https://sonarqube.com
+                </sonar.host.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>sonar-test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>
+                    http://localhost:9000
+                </sonar.host.url>
+            </properties>
+        </profile>
+    </profiles>
 </project>
