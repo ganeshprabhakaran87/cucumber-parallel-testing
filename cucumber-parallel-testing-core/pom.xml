@@ -171,19 +171,5 @@
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
-    <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <sonar.host.url>
-                    https://sonarqube.com
-                </sonar.host.url>
-            </properties>
-        </profile>
-    </profiles>
 </project>
