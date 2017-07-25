@@ -185,13 +185,5 @@
                 </sonar.host.url>
             </properties>
         </profile>
-        <profile>
-            <id>sonar-test</id>
-            <properties>
-                <sonar.host.url>
-                    http://localhost:9000
-                </sonar.host.url>
-            </properties>
-        </profile>
     </profiles>
 </project>
