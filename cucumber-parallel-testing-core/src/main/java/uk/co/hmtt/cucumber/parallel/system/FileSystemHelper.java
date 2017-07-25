@@ -8,7 +8,8 @@ import static java.lang.String.format;
 
 public class FileSystemHelper {
 
-    private FileSystemHelper() {}
+    private FileSystemHelper() {
+    }
 
     public static void createFolder(final String path) {
         final File file = new File(path);
@@ -19,8 +20,8 @@ public class FileSystemHelper {
 
     public static void deleteFile(final String path) {
         final File file = new File(path);
-        if (file.exists()) {
-            file.delete();
+        if (file.exists() && !file.delete()) {
+            throw new ParallelException(format("Could no delete file [%s]", path));
         }
     }
 

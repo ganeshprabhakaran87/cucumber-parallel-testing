@@ -13,3 +13,5 @@
 *.ear
 
 **/target
+/cucumber-parallel-testing-core/target/
+/cucumber-parallel-testing-acceptance/target/

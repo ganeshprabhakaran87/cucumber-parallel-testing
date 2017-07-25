@@ -25,7 +25,7 @@ public class Definition {
     @When("^I execute the test$")
     public void i_execute_the_test() throws Throwable {
         startTime = Calendar.getInstance().getTime();
-        Thread.sleep(delay * 1000);
+        Thread.sleep(delay * 1000); // NOSONAR
         finishTime = Calendar.getInstance().getTime();
     }
 

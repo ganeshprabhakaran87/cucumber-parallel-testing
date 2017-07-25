@@ -3,7 +3,7 @@
     <groupId>uk.co.hmtt</groupId>
     <artifactId>cucumber-parallel-testing</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>cucumber-parallel-testing</name>
     <description>Parallel testing of Cucumber JVM feature files</description>
     <url>https://github.com/hmtt/cucumber-parallel-testing</url>
